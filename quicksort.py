@@ -1,36 +1,38 @@
 import math
 
 def partition(arr, left, right, pivot):
-    print("    Partitioning", arr[left:right], "With " + str(pivot))
-    while (left <= right):
-        while (arr[left] < pivot):
-            left += 1
-
-        while (arr[right] > pivot):
-            right -= 1
+    print("Starting:", arr)
+    i = left - 1
+    j = left
+    while j < right:
+        if arr[j] > pivot:
+            j += 1
+            continue
         
-        while left <= right:
-            arr[left], arr[right] = arr[right], arr[left]
-            left += 1
-            right -= 1
+        if arr[j] < pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+            j += 1
+    print("Partitioned:", arr)
     
-    return left
+    pivot_index = i + 1
+    arr.pop(right) 
+    arr.insert(pivot_index, pivot)
+    return pivot_index
+            
 
 def quicksort(arr, left, right):
-    print(arr, left, right)
     if (left >= right):
         return
     
-    pv_n = int((left + right) / 2)
-    pivot = arr[pv_n]
-    index = partition(arr, left, right, pivot)
-
+    index = partition(arr, left, right, arr[right]) # Partition the array given the pivot which is the end of the list
+    
     quicksort(arr, left, index - 1)
     quicksort(arr, index, right)
 
 
 
 if __name__ == "__main__":
-    arr = [10, 3, 5, 11, 12, 4]
+    arr = [10, 3, 5, 11]
     quicksort(arr, 0, len(arr) - 1)
     print(arr)
