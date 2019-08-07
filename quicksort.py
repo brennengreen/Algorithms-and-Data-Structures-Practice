@@ -33,6 +33,6 @@ def quicksort(arr, left, right):
 
 
 if __name__ == "__main__":
-    arr = [10, 3, 5, 11]
+    arr = [59, 44, 2, 1, 4, 7, 9, 21, 36, 100, 99, 8, 12, 15, 13, 11, 85, 59, 99]
     quicksort(arr, 0, len(arr) - 1)
     print(arr)
