@@ -8,20 +8,22 @@ import sys
 
 # Complete the repeatedString function below.
 def repeatedString(s, n):
-    if s.count('a') == len(s):
-        return n
+    count_of_a = 0
+    for i in range(len(s)):
+        if (s[i] == 'a'):
+            count_of_a += 1
+            print(count_of_a)
 
+    num_of_reps = n // len(s)
+    count_of_a = num_of_reps * count_of_a
 
-    sub_string = ''
-    while len(sub_string) < n:
-        sub_string += s
+    l = n % len(s)
+    for i in range(l):
+        if (s[i] == 'a'):
+            count_of_a += 1
 
-    count = 0
-    for c in sub_string[:n]:
-        if c == 'a':
-            count += 1
-    
-    return count
+    return count_of_a
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
