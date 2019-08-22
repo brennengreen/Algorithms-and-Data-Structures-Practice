@@ -8,7 +8,11 @@ import sys
 
 # Complete the rotLeft function below.
 def rotLeft(a, d):
-    return (a[len(a) - d:] + a[:len(a) - d])
+    for i in range(d):
+        buf = a[0]
+        a.pop(0)
+        a.append(buf)
+    return a
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
